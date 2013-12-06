@@ -1,7 +1,7 @@
 Sample Joomla! library
 ==========
 
-To use it as reference for 3rd part developers. It includes common libraries requirements:
+To use it as reference for 3rd party developers. It includes common libraries requirements:
 
 * Setup autoloading
 * Language autoloading

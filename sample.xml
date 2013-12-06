@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="library" method="upgrade" version="2.5">
+    <name>Sample - Library</name>
+    <libraryname>sample</libraryname>
+    <author>@phproberto</author>
+    <authorEmail>roberto@phproberto.com</authorEmail>
+    <authorUrl>www.phproberto.com</authorUrl>
+    <copyright>Copyright (C) 2013 Roberto Segura. All rights reserved.</copyright>
+    <creationDate>December 2013</creationDate>
+    <license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
+    <version>1.0.0</version>
+    <description>Sample 3rd part library for Joomla!</description>
+    <files>
+        <folder>form</folder>
+        <folder>helper</folder>
+        <folder>html</folder>
+        <filename>LICENSE</filename>
+        <filename>library.php</filename>
+    </files>
+
+    <!-- Medias -->
+    <media destination="sample" folder="media/sample">
+        <folder>css</folder>
+        <folder>js</folder>
+    </media>
+
+    <languages folder="language">
+        <language tag="en-GB">en-GB/en-GB.lib_sample.ini</language>
+    </languages>
+</extension>

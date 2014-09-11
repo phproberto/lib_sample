@@ -42,11 +42,11 @@ This is a sample form that uses the library form fields and form rules
             type="text"
             label="COM_SAMPLE_FIELD_NAME"
             description="COM_SAMPLE_FIELD_NAME_DESC"
-            validate="login"
+            validate="sample.login"
 		/>
         <field
             name="list"
-            type="sample"
+            type="sample.list"
             label="COM_SAMPLE_FIELD_LIST"
             description="COM_SAMPLE_FIELD_LIST_DESC"
             default="1"
@@ -56,6 +56,8 @@ This is a sample form that uses the library form fields and form rules
 </form>
 ```
 
-The first field uses the `login` form rule (which is just a copy&rename of the standard `username` joomla rule) to validate a username/login.
+The first field uses the `sample.login` form rule (which is just a copy&rename of the standard `username` joomla rule) to validate a username/login.
 
-The second field uses a custom field defined inside the library (`sample`).
+The second field uses a custom field defined inside the library (`sample.list`).  
+
+Note that we call our fields/rules with `prefix.field` and `prefix.rule`. That means that we use a custom prefix for them instead of the core fields `J` prefix. [Read why](http://phproberto.com/en/blog/26-joomla-form-fields-rules-right-way)  

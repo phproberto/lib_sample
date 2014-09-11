@@ -16,7 +16,7 @@ defined('JPATH_PLATFORM') or die;
  * @subpackage  Form
  * @since       11.1
  */
-class JFormRuleLogin extends JFormRule
+class SampleFormRuleLogin extends JFormRule
 {
 	/**
 	 * Method to test the username for uniqueness.

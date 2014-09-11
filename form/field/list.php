@@ -12,13 +12,13 @@ defined('_JEXEC') or die;
 JFormHelper::loadFieldClass('list');
 
 /**
- * Sample form field
+ * Sample list form field
  *
  * @package     Sample.Library
  * @subpackage  Field
  * @since       1.0
  */
-class JFormFieldSample extends JFormFieldList
+class SampleFormFieldList extends JFormFieldList
 {
 	/**
 	 * The form field type.

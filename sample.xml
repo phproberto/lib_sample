@@ -14,7 +14,11 @@
         <folder>form</folder>
         <folder>helper</folder>
         <folder>html</folder>
+        <folder>language</folder>
+        <folder>src</folder>
+        <folder>vendor</folder>
         <filename>LICENSE</filename>
+        <filename>README.md</filename>
         <filename>library.php</filename>
     </files>
 
@@ -23,8 +27,4 @@
         <folder>css</folder>
         <folder>js</folder>
     </media>
-
-    <languages folder="language">
-        <language tag="en-GB">en-GB/en-GB.lib_sample.ini</language>
-    </languages>
 </extension>

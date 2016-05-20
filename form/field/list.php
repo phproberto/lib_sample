@@ -11,6 +11,8 @@ defined('_JEXEC') or die;
 
 JFormHelper::loadFieldClass('list');
 
+JLoader::import('sample.library');
+
 /**
  * Sample list form field
  *

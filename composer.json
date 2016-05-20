@@ -1,0 +1,14 @@
+{
+    "name"       : "phproberto/lib_sample",
+    "description": "Sample library for Joomla",
+    "license"    : "GPL-2.0+",
+    "require"    : {
+        "php": ">=5.3.10",
+        "monolog/monolog": "^1.19"
+    },
+    "autoload": {
+        "psr-4": {
+            "Phproberto\\Sample\\": "src/"
+        }
+    }
+}

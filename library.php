@@ -15,6 +15,13 @@ JLoader::setup();
 // Global libraries autoloader
 JLoader::registerPrefix('Sample', dirname(__FILE__));
 
+$composerAutoload = __DIR__ . '/vendor/autoload.php';
+
+if (file_exists($composerAutoload))
+{
+	$loader = require_once $composerAutoload;
+}
+
 // Common fields
 JFormHelper::addFieldPath(dirname(__FILE__) . '/form/field');
 

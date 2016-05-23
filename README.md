@@ -20,7 +20,7 @@ Sample third parth library for [Joomla!](http://joomla.org)
 
 ## 1. <a name="description"></a>Description
 
-This is a mainly a library bootstrap to be used as reference by 3rd party developers. 
+This is a mainly a library bootstrap to be used as reference by 3rd part Joomla! developers. 
 
 It includes common libraries requirements:  
 
@@ -34,7 +34,7 @@ It includes common libraries requirements:
 
 ## 2. <a name="loading-library"></a>Loading your library.
 
-Loading your library is as easy as adding this on top of the place where you want to start using it:
+Load your library adding this on the script you needt to use it:
 
 ```php
 JLoader::import('sample.library');
@@ -48,24 +48,46 @@ That doesn't mean that you have to add that line everywhere. You just have to ad
 * Modules:
     * `modules/mod_mymodule/mod_mymodule.php` (module entry point)
 * Plugins:
-    * `plugins/system/myplugin.php` (plugin class)
+    * `plugins/system/myplugin/myplugin.php` (plugin class)
 
-If you want to use library fields in view or module settings you have to also add it to the form XML like:  
+If you want to use library fields in view or module settings you have to also add the path to the fields folder to the form XML:  
 
 ```xml
 <fields name="params" addfieldpath="/libraries/sample/form/field">
 ```
 
-Also when fields are used inside view or module settings you will need to add the loader on top of field classes.
+Also when fields are used inside view or module settings you will need to add the loader on top of field classes like:  
+
+```php
+<?php
+/**
+ * @package     Sample.Library
+ * @subpackage  Field
+ *
+ * @copyright   Copyright (C) 2013-2016 Roberto Segura. All rights reserved.
+ * @license     GNU General Public License version 2 or later; see LICENSE
+ */
+
+defined('_JEXEC') or die;
+
+JLoader::import('sample.library');
+
+/**
+ * Sample list form field
+ *
+ * @since  1.0.0
+ */
+class SampleFormFieldList extends JFormFieldList
+{
+```
 
 ## 3. <a name="autoloading"></a>Autoloading naming conventions
 
 You can get your classes loaded in two different ways:  
 
-
 ### 3.1. <a name="non-namespaced-classes"></a>Non-namespaced classes. 
 
-This is the "old way" of loading classes. There is a prefix defined  in the root folder of your library (`Sample` for this library). And for autoloading working the naming convention is that each folder becomes a new word on the class name and the file is the last word there. 
+This is the "old way" of loading classes. There is a prefix defined in the root folder of your library (`Sample` for this library). The naming convention for autoloading is that each folder becomes a new word on the class name and the file is the last word there. 
 
 The class `SampleHelperAsset` contains three parts:
 
@@ -87,21 +109,23 @@ $result = SampleHelperNumbers::sum(array(4,3));
 
 ### 3.2. <a name="namespaced-classes"></a>Namespaced classes. 
 
-The concept is the same than prefixes but instead of setting a prefix in your library root folder you are defining a namespace on X folder (`src` in this library). This library uses composer for autoloading because it's more flexible than `JLoader`.
+The concept is the same than prefixes but instead of setting a prefix in your library root folder you are defining a namespace on X folder (`src` in this library). We will use composer for autoloading because it's more flexible than `JLoader`.  
 
-In this library the global namespace defined is `Phproberto\Sample`. So a class loaded like:
+The global namespace defined in this library is `Phproberto\Sample`. So a class loaded like:  
 
 ```php
 use Phproberto\Sample\Monolog\PhpfileHandler;
 ```
 
-Contains 3 parts:
+Contains 3 parts:  
 
 * `Phproberto\Sample` (global namespace defined)
 * `Monolog` (folder)
 * `PhpfileHandler` (file)
 
-The autoloading is done defining a PSR-4 prefix in our composer.json file like:
+And resides in:  `src/Monolog/PhpfileHandler.php`
+
+The autoloading magic is done defining a PSR-4 prefix in our composer.json file like:
 
 ```json
     "autoload": {
@@ -111,13 +135,13 @@ The autoloading is done defining a PSR-4 prefix in our composer.json file like:
     }
 ```
 
-So you can replace that with your own base namespace.
+You can replace that with your own base namespace.  
 
-(Example: `Phproberto\Sample\Monolog\PhpfileHandler`);
-
-Sample usage of one of our namespaced classes:  
+Sample usage of namespaced classes:  
 
 ```php
+JLoader::import('sample.library');
+
 use Phproberto\Sample\Helper\Dummy;
 
 $dummyClass = new Dummy;
@@ -149,7 +173,7 @@ SampleHelperAsset::load('sample.css', 'sample');
 /**
  * Sample JS file. It will automatically try to load overrides at template level.
  * 
- * This example will search JS file in these paths:
+ * This example will search JS file in these paths:  
  *
  * `/templates/MY_TEMPLATE/js/sample/sample.js`  
  * `/media/sample/js/sample.js`
@@ -176,7 +200,7 @@ Library automatically registers fields + rules paths to be used anywhere.
 
 ### 6.1. <a name="fields"></a>Fields.
 
-You can load library with `prefix.field`. we use a custom prefix for our fields instead of the core fields `J` prefix. [Read why](http://phproberto.com/en/blog/26-joomla-form-fields-rules-right-way)  
+You can load library's fields with `prefix.field`. We use a custom prefix for our fields instead of the core fields `J` prefix. [Read why](http://phproberto.com/en/blog/26-joomla-form-fields-rules-right-way)  
 
 Sample usage:  
 
@@ -198,7 +222,7 @@ Sample usage:
 
 ### 6.2. <a name="rules"></a>Rules.
 
-You can load library field rules with `prefix.rule``. We use a custom prefix for our rules instead of the core fields `J` prefix. [Read why](http://phproberto.com/en/blog/26-joomla-form-fields-rules-right-way)  
+You can load library's field rules with `prefix.rule``. We use a custom prefix for our rules instead of the core fields `J` prefix. [Read why](http://phproberto.com/en/blog/26-joomla-form-fields-rules-right-way)  
 
 Sample usage:
 
@@ -221,7 +245,7 @@ Sample usage:
 
 You can integrate any existing library available on composer/packagist (See [https://getcomposer.org/](https://getcomposer.org/)).
 
-To install/require a new library you only need to run from command line:  
+To install/require a new library you only need to run from command line something like:  
 
 `composer require monolog/monolog`
 
@@ -240,7 +264,7 @@ $logger->addError('This is a dummy error');
 
 **Note about composer libraries and git integration:**  
 
-This repository is not gitignoring external libraries so you can see the full extension folders tree. Please not the you have should do so to avoid tracking them with git. You only need to add this to your gitignore:
+This repository is not gitignoring external libraries so you can see the full extension folders tree. Please note that you should do so to avoid tracking them with git. You only need to add this to your gitignore:
 
 ```
 /vendors/*

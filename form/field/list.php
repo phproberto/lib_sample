@@ -3,22 +3,18 @@
  * @package     Sample.Library
  * @subpackage  Field
  *
- * @copyright   Copyright (C) 2013 Roberto Segura. All rights reserved.
+ * @copyright   Copyright (C) 2013-2016 Roberto Segura. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
 defined('_JEXEC') or die;
-
-JFormHelper::loadFieldClass('list');
 
 JLoader::import('sample.library');
 
 /**
  * Sample list form field
  *
- * @package     Sample.Library
- * @subpackage  Field
- * @since       1.0
+ * @since  1.0.0
  */
 class SampleFormFieldList extends JFormFieldList
 {
